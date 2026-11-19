@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combo cặp đôi & cá nhân - Sushi Snow</title>
+    <link rel="stylesheet" href="css/style1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <div class="nav-full">
+        <nav>
+            <div class="logo">
+                <a href="index.html"><img src="image/logo.jpg" alt="Logo Sushi Snow"></a>
+            </div>
+            <button class="menu-toggle" aria-label="Mở menu"><i class="fa-solid fa-bars"></i></button>
+
+            <div class="menu">
+                <ul>
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="gioithieu.html">Giới thiệu</a></li>
+                    <li><a href="tintuc.html">Tin tức</a></li>
+                    <li><a href="sanpham.html">Sản phẩm</a></li>
+                    <li><a href="cart.html">Giỏ hàng</a></li>
+                    <li class="dropdown">
+                        <a href="#">Set combo ▾</a>
+                        <ul class="menu-con">
+                            <li><a href="combo1.html">Combo gia đình &amp; nhóm</a></li>
+                            <li><a href="combo2.html">Combo cặp đôi &amp; cá nhân</a></li>
+                            <li><a href="#">Combo 10 sushi ngẫu nhiên</a></li>
+                            <li><a href="#">Combo 3 sashimi và 1 Coca vừa</a></li>
+                            <li><a href="#">Combo 2 set sushi mix đủ loại</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Tài khoản ▾</a>
+                        <ul class="menu-con">
+                            <li><a href="dangnhap.html">Đăng nhập</a></li>
+                            <li><a href="dangky.html">Đăng ký</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- 8 COMBO (2 hàng đầu) - đổ từ js/combo.js -->
+        <section class="container related-products-section">
+            <h1 class="section-title">COMBO CẶP ĐÔI &amp; CÁ NHÂN</h1>
+            <div class="row product-list" id="dscombo"></div>
+        </section>
+
+        <!-- CHI TIẾT COMBO ĐANG CHỌN -->
+        <div class="product-detail-section" id="chitiet">
+            <h1 class="section-title">CHI TIẾT COMBO</h1>
+            <div class="row">
+                <div class="left">
+                    <img src="" alt="Combo Sushi Snow" id="main-img">
+                    <div class="thumbnail-row" id="thumbs"></div>
+                </div>
+
+                <div class="right">
+                    <h2 id="ten"></h2>
+                    <p id="mota"></p>
+                    <ul class="combo-list" id="gom"></ul>
+                    <h3 class="price" id="gia"></h3>
+                    <div class="quantity-box">
+                        <label><b>Số lượng: </b></label>
+                        <button onclick="decreaseQty()" aria-label="Giảm">-</button>
+                        <input type="text" id="quantity" value="1" readonly>
+                        <button onclick="increaseQty()" aria-label="Tăng">+</button>
+                    </div>
+                    <button class="btn-order" onclick="orderCombo()">Đặt Combo Ngay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-box">
+                <h2>SUSHI SNOW</h2>
+                <p>Hương vị ẩm thực Nhật Bản<br>tươi ngon, tinh tế mỗi ngày.</p>
+            </div>
+            <div class="footer-box">
+                <h3>Liên kết</h3>
+                <a href="index.html">Trang chủ</a>
+                <a href="sanpham.html">Sushi - Sashimi</a>
+                <a href="gioithieu.html">Liên hệ</a>
+                <a href="#">Ưu đãi</a>
+            </div>
+            <div class="footer-box">
+                <h3>Liên hệ</h3>
+                <p><i class="fa-solid fa-location-dot"></i> TP. Hồ Chí Minh</p>
+                <p><i class="fa-solid fa-phone"></i> 0123 456 789</p>
+                <p><i class="fa-solid fa-envelope"></i> sushisnow@gmail.com</p>
+            </div>
+            <div class="footer-box">
+                <h3>Theo dõi</h3>
+                <div class="social">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 SUSHI SNOW - All Rights Reserved</div>
+    </footer>
+
+    <script src="js/menu.js"></script>
+    <div id="toast"></div>
+    <script>let comboTrang = 'combo2.html';</script>
+    <script src="js/combo.js"></script>
+</body>
+
+</html>

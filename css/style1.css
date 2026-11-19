@@ -1,0 +1,165 @@
+@import url("style.css");
+
+/* CHI TIẾT SẢN PHẨM (giữ bố cục cũ: ảnh 66% - thông tin 32%) */
+.product-detail-section {
+    width: 1200px;
+    max-width: 95%;
+    margin: 25px auto 0;
+}
+
+.product-detail-section > .row {
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.left {
+    width: 66%;
+    padding: 15px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+}
+
+.left #main-img {
+    width: 100%;
+    height: 350px;
+    object-fit: contain;
+}
+
+.thumbnail-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.frame {
+    width: 90px;
+    height: 90px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.frame:hover {
+    border-color: #00505e;
+}
+
+.frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.right {
+    width: 32%;
+    min-height: 350px;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+}
+
+.right h2 {
+    color: #00505e;
+    font-size: 24px;
+}
+
+.right p {
+    line-height: 1.7;
+}
+
+.price {
+    color: #c0392b;
+    font-size: 26px;
+    margin: 20px 0;
+}
+
+.quantity-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 25px 0;
+}
+
+.quantity-box button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #ccc;
+    background: #f5f5f5;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.quantity-box input {
+    width: 45px;
+    height: 32px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+.btn-order {
+    background-color: #00505e;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 22px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-order:hover {
+    background-color: #00a6a6;
+}
+
+@media (max-width: 768px) {
+    .left,
+    .right {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .left #main-img {
+        height: 250px;
+    }
+}
+
+
+/* RESPONSIVE BỔ SUNG CHO TRANG CHI TIẾT / COMBO */
+@media (max-width: 768px) {
+    .product-detail-section > .row {
+        gap: 15px;
+    }
+
+    .left #main-img {
+        height: 300px;
+    }
+
+    .right {
+        min-height: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .frame {
+        width: 65px;
+        height: 65px;
+    }
+
+    .right {
+        padding: 15px;
+    }
+
+    .price {
+        font-size: 22px;
+    }
+
+    .btn-order {
+        width: 100%;
+    }
+}

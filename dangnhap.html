@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập - Sushi Snow</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <div class="nav-full">
+        <nav>
+            <div class="logo">
+                <a href="index.html"><img src="image/logo.jpg" alt="Logo Sushi Snow"></a>
+            </div>
+            <button class="menu-toggle" aria-label="Mở menu"><i class="fa-solid fa-bars"></i></button>
+
+            <div class="menu">
+                <ul>
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="gioithieu.html">Giới thiệu</a></li>
+                    <li><a href="tintuc.html">Tin tức</a></li>
+                    <li><a href="sanpham.html">Sản phẩm</a></li>
+                    <li><a href="cart.html">Giỏ hàng</a></li>
+                    <li class="dropdown">
+                        <a href="#">Set combo ▾</a>
+                        <ul class="menu-con">
+                            <li><a href="combo1.html">Combo gia đình &amp; nhóm</a></li>
+                            <li><a href="combo2.html">Combo cặp đôi &amp; cá nhân</a></li>
+                            <li><a href="#">Combo 10 sushi ngẫu nhiên</a></li>
+                            <li><a href="#">Combo 3 sashimi và 1 Coca vừa</a></li>
+                            <li><a href="#">Combo 2 set sushi mix đủ loại</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Tài khoản ▾</a>
+                        <ul class="menu-con">
+                            <li><a href="dangnhap.html">Đăng nhập</a></li>
+                            <li><a href="dangky.html">Đăng ký</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+    <!-- KHUNG ĐĂNG NHẬP -->
+    <section class="auth-section">
+        <div id="login">
+            <button id="btnTat" aria-label="Đóng">×</button>
+            <h1>Đăng Nhập</h1>
+            <p class="auth-sub">Chào mừng bạn trở lại Sushi Snow</p>
+            <div class="gr">
+                <label for="user">Tài khoản (số điện thoại):</label>
+                <input type="text" id="user" placeholder="VD: 0901234567">
+                <label for="pass">Mật khẩu:</label>
+                <input type="password" id="pass" placeholder="Nhập mật khẩu">
+            </div>
+            <label class="show-pass"><input type="checkbox" id="hienmk"> Hiện mật khẩu</label>
+            <button id="btnLogin">Đăng nhập</button>
+            <p id="thongbao"></p>
+            <a class="auth-link" href="dangky.html">Chưa có tài khoản? <b>Đăng ký ngay</b></a>
+        </div>
+    </section>
+</div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-box">
+                <h2>SUSHI SNOW</h2>
+                <p>Hương vị ẩm thực Nhật Bản<br>tươi ngon, tinh tế mỗi ngày.</p>
+            </div>
+            <div class="footer-box">
+                <h3>Liên kết</h3>
+                <a href="index.html">Trang chủ</a>
+                <a href="sanpham.html">Sushi - Sashimi</a>
+                <a href="gioithieu.html">Liên hệ</a>
+                <a href="#">Ưu đãi</a>
+            </div>
+            <div class="footer-box">
+                <h3>Liên hệ</h3>
+                <p><i class="fa-solid fa-location-dot"></i> TP. Hồ Chí Minh</p>
+                <p><i class="fa-solid fa-phone"></i> 0123 456 789</p>
+                <p><i class="fa-solid fa-envelope"></i> sushisnow@gmail.com</p>
+            </div>
+            <div class="footer-box">
+                <h3>Theo dõi</h3>
+                <div class="social">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 SUSHI SNOW - All Rights Reserved</div>
+    </footer>
+
+    <script src="js/menu.js"></script>
+    <script>
+$("#btnTat").click(function () { window.location.href = "index.html"; });
+
+// Hiện / ẩn mật khẩu
+$("#hienmk").change(function () {
+    $("#pass").attr("type", this.checked ? "text" : "password");
+});
+
+function baoLoi(msg, o) {
+    $(".gr input").removeClass("sai");
+    $("#thongbao").text(msg).attr("class", "loi");
+    if (o) o.addClass("sai").focus();
+}
+
+$("#btnLogin").click(function () {
+    let user = $("#user").val().trim();
+    let pass = $("#pass").val();   // không trim mật khẩu để khớp với lúc đăng ký
+    let dsTK = JSON.parse(localStorage.getItem("taikhoan_Storage")) || [];
+
+    if (user === "") { baoLoi("Bạn vui lòng nhập số điện thoại nhé!", $("#user")); return; }
+    if (pass === "") { baoLoi("Bạn vui lòng nhập mật khẩu nhé!", $("#pass")); return; }
+
+    let tk = dsTK.find(a => a.sdt === user);
+    if (!tk) { baoLoi("Số điện thoại này chưa đăng ký. Hãy tạo tài khoản trước nhé.", $("#user")); return; }
+    if (tk.matkhau !== pass) { baoLoi("Mật khẩu chưa đúng, bạn thử lại nhé.", $("#pass")); return; }
+
+    $(".gr input").removeClass("sai");
+    localStorage.setItem("nguoidung_Storage", tk.hoten);
+    $("#thongbao").text("Đăng nhập thành công! Chúc bạn một bữa ăn thật ngon miệng.").attr("class", "ok");
+    setTimeout(function () { window.location.href = "index.html"; }, 1200);
+});
+
+// Nhấn Enter để đăng nhập
+$(".gr input").on("keydown", function (e) { if (e.key === "Enter") $("#btnLogin").click(); });
+    </script>
+</body>
+
+</html>
